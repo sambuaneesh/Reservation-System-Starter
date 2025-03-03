@@ -1,0 +1,54 @@
+site_name: Design Smells Documentation
+site_description: Documentation covering design smells and code analysis
+docs_dir: docs
+repo_url: https://github.com/sambuaneesh/Reservation-System-Starter
+repo_name: Design Smells Documentation
+
+theme:
+  name: material
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.footer
+    - header.autohide
+    - navigation.tabs
+    - search.suggest
+    - search.highlight
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+nav:
+  - Home: index.md
+  - Design Smells:
+      - 'Design Smell 1': 'design-smells/design-smell-1.md'
+      - 'Design Smell 2': 'design-smells/design-smell-2.md'
+      - 'Design Smell 3': 'design-smells/design-smell-3.md'
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - attr_list
+  - md_in_html
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - tables
+
+plugins:
+  - search
