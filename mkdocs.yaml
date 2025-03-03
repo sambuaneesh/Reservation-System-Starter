@@ -1,8 +1,8 @@
-site_name: Design Smells Documentation
-site_description: Documentation covering design smells and code analysis
+site_name: Design Patterns Documentation
+site_description: Documentation covering design patterns implemented in flight reservation system
 docs_dir: docs
 repo_url: https://github.com/sambuaneesh/Reservation-System-Starter
-repo_name: Design Smells Documentation
+repo_name: Design Patterns Documentation
 
 theme:
   name: material
@@ -35,10 +35,12 @@ theme:
 
 nav:
   - Home: index.md
-  - Design Smells:
-      - 'Design Smell 1': 'design-smells/design-smell-1.md'
-      - 'Design Smell 2': 'design-smells/design-smell-2.md'
-      - 'Design Smell 3': 'design-smells/design-smell-3.md'
+  - Design Patterns:
+      - 'Strategy Pattern': 'design-smells/design-smell-1.md'
+      - 'Factory Method Pattern': 'design-smells/design-smell-2.md'
+      - 'Template Method Pattern': 'design-smells/design-smell-3.md'
+      - 'Observer Pattern': 'design-smells/design-smell-4.md'
+      - 'Composite Pattern': 'design-smells/design-smell-5.md'
 
 markdown_extensions:
   - admonition
