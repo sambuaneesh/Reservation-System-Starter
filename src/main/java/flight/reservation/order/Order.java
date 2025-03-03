@@ -6,8 +6,7 @@ import flight.reservation.Passenger;
 import java.util.List;
 import java.util.UUID;
 
-public class Order {
-
+public abstract class Order {
     private final UUID id;
     private double price;
     private boolean isClosed = false;
@@ -16,6 +15,33 @@ public class Order {
 
     public Order() {
         this.id = UUID.randomUUID();
+    }
+
+    // Template method defining the skeleton of order processing
+    public final boolean processOrder() throws IllegalStateException {
+        if (isClosed()) {
+            return true;
+        }
+
+        if (!validateOrder()) {
+            throw new IllegalStateException("Order validation failed.");
+        }
+
+        if (!processPayment()) {
+            return false;
+        }
+
+        finalizeOrder();
+        return true;
+    }
+
+    // Abstract methods to be implemented by subclasses
+    protected abstract boolean validateOrder();
+    protected abstract boolean processPayment();
+
+    // Hook method with default implementation
+    protected void finalizeOrder() {
+        setClosed();
     }
 
     public UUID getId() {
@@ -53,5 +79,4 @@ public class Order {
     public void setClosed() {
         isClosed = true;
     }
-
 }

@@ -1,6 +1,5 @@
 package flight.reservation.order;
 
-import flight.reservation.Customer;
 import flight.reservation.flight.ScheduledFlight;
 import flight.reservation.payment.CreditCard;
 import flight.reservation.payment.CreditCardPaymentStrategy;
@@ -28,91 +27,57 @@ public class FlightOrder extends Order {
         return flights;
     }
 
-    private boolean isOrderValid(Customer customer, List<String> passengerNames, List<ScheduledFlight> flights) {
-        boolean valid = true;
-        valid = valid && !noFlyList.contains(customer.getName());
-        valid = valid && passengerNames.stream().noneMatch(passenger -> noFlyList.contains(passenger));
-        valid = valid && flights.stream().allMatch(scheduledFlight -> {
-            try {
-                return scheduledFlight.getAvailableCapacity() >= passengerNames.size();
-            } catch (NoSuchFieldException e) {
-                e.printStackTrace();
+    @Override
+    protected boolean validateOrder() {
+        if (paymentStrategy == null) {
+            return false;
+        }
+
+        if (getCustomer() == null) {
+            return false;
+        }
+
+        if (noFlyList.contains(getCustomer().getName())) {
+            return false;
+        }
+
+        if (getPassengers() == null || getPassengers().isEmpty()) {
+            return false;
+        }
+
+        for (var passenger : getPassengers()) {
+            if (noFlyList.contains(passenger.getName())) {
                 return false;
             }
-        });
-        return valid;
+        }
+
+        return true;
     }
 
-    /**
-     * Sets the payment strategy to use for processing the order.
-     * 
-     * @param paymentStrategy The payment strategy to use
-     */
+    @Override
+    protected boolean processPayment() {
+        if (!paymentStrategy.isValid()) {
+            return false;
+        }
+
+        return paymentStrategy.pay(this.getPrice());
+    }
+
     public void setPaymentStrategy(PaymentStrategy paymentStrategy) {
         this.paymentStrategy = paymentStrategy;
     }
 
-    /**
-     * Process the order with the current payment strategy.
-     * 
-     * @return true if payment was successful, false otherwise
-     * @throws IllegalStateException if payment information is invalid or payment fails
-     */
-    public boolean processOrder() throws IllegalStateException {
-        if (isClosed()) {
-            // Payment is already proceeded
-            return true;
-        }
-        
-        if (paymentStrategy == null) {
-            throw new IllegalStateException("Payment strategy is not set.");
-        }
-        
-        if (!paymentStrategy.isValid()) {
-            throw new IllegalStateException("Payment information is not valid.");
-        }
-        
-        boolean isPaid = paymentStrategy.pay(this.getPrice());
-        if (isPaid) {
-            this.setClosed();
-        }
-        return isPaid;
-    }
-
-    /**
-     * Convenience method to set credit card payment strategy and process the order.
-     * 
-     * @param number Credit card number
-     * @param expirationDate Credit card expiration date
-     * @param cvv Credit card CVV
-     * @return true if payment was successful, false otherwise
-     * @throws IllegalStateException if payment information is invalid or payment fails
-     */
+    // Convenience methods remain the same
     public boolean processOrderWithCreditCardDetail(String number, Date expirationDate, String cvv) throws IllegalStateException {
         setPaymentStrategy(new CreditCardPaymentStrategy(number, expirationDate, cvv));
         return processOrder();
     }
 
-    /**
-     * Convenience method to set credit card payment strategy and process the order.
-     * 
-     * @param creditCard The credit card to use for payment
-     * @return true if payment was successful, false otherwise
-     * @throws IllegalStateException if payment information is invalid or payment fails
-     */
     public boolean processOrderWithCreditCard(CreditCard creditCard) throws IllegalStateException {
         setPaymentStrategy(new CreditCardPaymentStrategy(creditCard));
         return processOrder();
     }
 
-    /**
-     * Convenience method to set PayPal payment strategy and process the order.
-     * 
-     * @param email PayPal email
-     * @param password PayPal password
-     * @return true if payment was successful, false otherwise
-     * @throws IllegalStateException if payment information is invalid or payment fails
-     */
     public boolean processOrderWithPayPal(String email, String password) throws IllegalStateException {
         setPaymentStrategy(new PaypalPaymentStrategy(email, password));
         return processOrder();
