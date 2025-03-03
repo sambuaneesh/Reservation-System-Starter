@@ -355,6 +355,42 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#1-scheduledflightjava" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ScheduledFlight.java
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-flightorderjava" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. FlightOrder.java
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-customerjava" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Customer.java
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-multiflightjourneyjava-our-new-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. MultiFlightJourney.java (Our new package)
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -554,6 +590,42 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#1-scheduledflightjava" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. ScheduledFlight.java
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-flightorderjava" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. FlightOrder.java
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-customerjava" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Customer.java
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-multiflightjourneyjava-our-new-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. MultiFlightJourney.java (Our new package)
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -584,6 +656,32 @@
 <li><a href="design-smells/design-smell-4/">Observer Pattern</a></li>
 <li><a href="design-smells/design-smell-5/">Composite Pattern</a></li>
 </ol>
+<p>While we focused on different design patterns, much like the real world we believed some of the code had more than one design patterns which could be addressed.
+Here are the files where we implemented multiple design patterns simultaneously:</p>
+<h2 id="1-scheduledflightjava">1. ScheduledFlight.java</h2>
+<ul>
+<li><strong>Observer Pattern</strong>: Implements <code>FlightSubject</code> interface for notification</li>
+<li><strong>Factory Method Pattern</strong>: Uses the <code>Aircraft</code> interface from Factory pattern</li>
+</ul>
+<h2 id="2-flightorderjava">2. FlightOrder.java</h2>
+<ul>
+<li><strong>Template Method Pattern</strong>: Implements abstract methods from Order superclass</li>
+<li><strong>Strategy Pattern</strong>: Uses <code>PaymentStrategy</code> for flexible payment processing</li>
+</ul>
+<h2 id="3-customerjava">3. Customer.java</h2>
+<ul>
+<li><strong>Observer Pattern</strong>: Implements <code>FlightObserver</code> interface to receive notifications</li>
+<li><strong>Factory Method Pattern</strong>: Uses aircraft system indirectly through flights</li>
+</ul>
+<h2 id="4-multiflightjourneyjava-our-new-package">4. MultiFlightJourney.java (Our new package)</h2>
+<ul>
+<li><strong>Composite Pattern</strong>: Core component that contains other Journey objects</li>
+<li><strong>Observer Pattern</strong>: Indirectly participates by passing passenger changes to contained journeys</li>
+</ul>
+<h1 id="resources">Resources</h1>
+<ul>
+<li><a href="https://refactoring.guru/">Refactoring Guru</a></li>
+</ul>
 
 
 
