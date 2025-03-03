@@ -1,6 +1,6 @@
 # Observer Pattern Refactoring
 
-This document details the implementation of the Observer Pattern in the flight reservation system to provide notifications for flight schedule changes.
+See [Refactoring Guru](https://refactoring.guru/design-patterns/observer). This document details the implementation of the Observer Pattern in the flight reservation system to provide notifications for flight schedule changes.
 
 ## Problem Identification
 

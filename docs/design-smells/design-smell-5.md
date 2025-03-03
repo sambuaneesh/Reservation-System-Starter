@@ -1,6 +1,6 @@
 # Composite Pattern Implementation
 
-This document details the implementation of the Composite Pattern in the flight reservation system to handle both simple direct flights and complex multi-leg journeys.
+See [Refactoring Guru](https://refactoring.guru/design-patterns/composite). This document details the implementation of the Composite Pattern in the flight reservation system to handle both simple direct flights and complex multi-leg journeys.
 
 ## Problem Identification
 

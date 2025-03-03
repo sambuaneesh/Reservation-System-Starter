@@ -1,6 +1,6 @@
 # Strategy Pattern Refactoring
 
-This md details the implementation of the Strategy Pattern in this repository to improve the payment processing mechanism.
+See [Refactoring Guru](https://refactoring.guru/design-patterns/strategy). This document details the implementation of the Strategy Pattern in this repository to improve the payment processing mechanism.
 
 ## Problem Identification
 

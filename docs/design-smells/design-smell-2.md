@@ -1,6 +1,6 @@
 # Factory Method Pattern Refactoring
 
-This md details the implementation of the Factory Method Pattern in this repository to improve the aircraft class hierarchy and management.
+See [Refactoring Guru](https://refactoring.guru/design-patterns/factory-method). This document details the implementation of the Factory Method Pattern in this repository to improve the aircraft class hierarchy and management.
 
 ## Problem Identification
 

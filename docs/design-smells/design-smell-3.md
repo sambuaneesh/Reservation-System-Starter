@@ -1,6 +1,6 @@
 # Template Method Pattern Refactoring
 
-This document details the implementation of the Template Method Pattern in the flight reservation system to standardize and improve the order processing workflow.
+See [Refactoring Guru](https://refactoring.guru/design-patterns/template-method) This document details the implementation of the Template Method Pattern in the flight reservation system to standardize and improve the order processing workflow.
 
 ## Problem Identification
 
