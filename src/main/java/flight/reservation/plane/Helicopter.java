@@ -1,11 +1,10 @@
 package flight.reservation.plane;
 
-public class Helicopter {
+public class Helicopter implements Aircraft {
     private final String model;
     private final int passengerCapacity;
 
     public Helicopter(String model) {
-        this.model = model;
         if (model.equals("H1")) {
             passengerCapacity = 4;
         } else if (model.equals("H2")) {
@@ -13,6 +12,7 @@ public class Helicopter {
         } else {
             throw new IllegalArgumentException(String.format("Model type '%s' is not recognized", model));
         }
+        this.model = model;
     }
 
     public String getModel() {
@@ -21,5 +21,10 @@ public class Helicopter {
 
     public int getPassengerCapacity() {
         return passengerCapacity;
+    }
+
+    @Override
+    public int getCrewCapacity() {
+        return 2; // Fixed for all helicopters
     }
 }
