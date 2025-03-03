@@ -21,14 +21,14 @@ public class Flight {
     }
 
     private void checkValidity() throws IllegalArgumentException {
-        if (isAircraftValid(departure) || isAircraftValid(arrival)) {
+        if (isAircraftValid(departure) && isAircraftValid(arrival)) {
             throw new IllegalArgumentException("Selected aircraft is not valid for the selected route.");
         }
     }
 
     private boolean isAircraftValid(Airport airport) {
         return Arrays.stream(airport.getAllowedAircrafts())
-                .noneMatch(x -> x.equals(aircraft.getModel()));
+                .anyMatch(x -> x.equals(aircraft.getModel()));
     }
 
     public Aircraft getAircraft() {
